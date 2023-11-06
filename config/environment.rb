@@ -5,11 +5,11 @@ require_relative "application"
 Rails.application.initialize!
 
 ActionMailer::Base.smtp_settings = {
-  :address => 'smtp.gmail.com',
+  :user_name => ENV['MAILJET_LOGIN'],
+  :password => ENV['MAILJET_PWD'],
+  :domain => 'monsite.fr',
+  :address => 'in-v3.mailjet.com',
   :port => 587,
-  :domain => 'gmail.com', #you can also use google.com
-
-  :user_name => ENV['GMAIL_LOGIN'],
-  :password => ENV['GMAIL_PWD'],
-  :authentication => :plain
+  :authentication => :plain,
+  :enable_starttls_auto => true
 }
