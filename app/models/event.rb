@@ -7,13 +7,13 @@ class Event < ApplicationRecord
   #code pour indiquer pas de modif ou créa dans le passé
   validate :start_date_in_future
 
-  validates :duration, presence: true, numericality: { greater_than: 0, multiple_of: 5 }
+  validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0, multiple_of: 5, message: "La durée doit être un nombre entier, multiple de 5 et supérieur à 0 min." }
   
-  validates :title, presence: true, length: { in: 5..140 }
+  validates :title, presence: true, length: { in: 5..140, message: "Le titre doit comprendre entre 5 et 140 charactères." }
   
-  validates :description, presence: true, length: { in: 20..1000 }
+  validates :description, presence: true, length: { in: 20..1000, message: "La description doit comprendre entre 20 et 1 000 charactères." }
   
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 1000, message: "Le prix est compris entre 1 et 1 000 euros." }
   
   validates :location, presence: true
   
