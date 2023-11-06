@@ -9,6 +9,14 @@ class UserMailer < ApplicationMailer
     @url  = 'http://eventbrite-saint-loup.fr/login'
 
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @user.email, subject: 'Bienvenue chez nous !')
+    mail(to: @user.email, subject: "Bienvenue chez nous !")
+  end
+
+  def attendance_email(user)
+    @user = user
+
+    @url  = 'http://eventbrite-saint-loup.fr/login'
+
+    mail(to: @user.email, subject: "Inscription à l'événement validée !")
   end
 end
